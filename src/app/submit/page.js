@@ -53,6 +53,7 @@ export default function SubmitPage() {
                         <ul className={styles.conditionsList}>
                             <li>個人またはインディーチームが制作したオリジナルアニメーション作品であること</li>
                             <li>YouTubeに公開済みの作品であること</li>
+                            <li>「1分以上」のアニメーション作品であること</li>
                             <li>他者の著作権を侵害していないこと</li>
                             <li>公序良俗に反する内容でないこと</li>
                         </ul>
