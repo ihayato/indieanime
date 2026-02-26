@@ -21,7 +21,7 @@ export default async function HomePage() {
           <div className={styles.heroBgOrb3}></div>
         </div>
         <div className={`container ${styles.heroInner}`}>
-          <span className={styles.heroBadge}>🎬 インディーアニメ専門プラットフォーム</span>
+          <span className={styles.heroBadge}>🎬 インディーアニメ投稿プラットフォーム</span>
           <h1 className={styles.heroTitle}>
             あなたのアニメを、
             <br />
