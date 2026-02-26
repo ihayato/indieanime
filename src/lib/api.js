@@ -35,9 +35,11 @@ export async function fetchWorks() {
  */
 export async function fetchWorksByNewest() {
     const works = await fetchWorks();
-    return [...works].sort(
-        (a, b) => new Date(b.submittedAt) - new Date(a.submittedAt)
-    );
+    return [...works].sort((a, b) => {
+        const timeDiff = new Date(b.submittedAt) - new Date(a.submittedAt);
+        if (timeDiff !== 0) return timeDiff;
+        return Number(b.id) - Number(a.id);
+    });
 }
 
 /**

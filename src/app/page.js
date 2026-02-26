@@ -115,8 +115,8 @@ export default async function HomePage() {
           <div className="container">
             <div className={styles.sectionHead}>
               <div>
-                <h2 className="section__title">🌟 ピックアップ作品</h2>
-                <p className="section__subtitle">注目のインディーアニメ作品をご紹介</p>
+                <h2 className="section__title">👑 再生数ランキング</h2>
+                <p className="section__subtitle">サイト内でよく見られている注目のアニメ</p>
               </div>
             </div>
             <div className="grid grid--3">
