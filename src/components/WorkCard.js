@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getYouTubeThumbnail } from '@/lib/youtube';
-import { formatViewCount } from '@/lib/mockData';
+import { formatViewCount, CATEGORIES } from '@/lib/mockData';
 import styles from './WorkCard.module.css';
 
 export default function WorkCard({ work }) {
@@ -25,7 +25,14 @@ export default function WorkCard({ work }) {
                 )}
             </div>
             <div className={styles.info}>
-                <h3 className={styles.title}>{work.title}</h3>
+                <div className={styles.infoTop}>
+                    <h3 className={styles.title}>{work.title}</h3>
+                    {work.category && CATEGORIES[work.category] && (
+                        <span className={`${styles.categoryBadge} ${styles[`category_${work.category}`]}`}>
+                            {CATEGORIES[work.category].emoji} {CATEGORIES[work.category].short}
+                        </span>
+                    )}
+                </div>
                 <p className={styles.creator}>{work.creatorName}</p>
             </div>
         </Link>

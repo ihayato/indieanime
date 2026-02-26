@@ -63,3 +63,19 @@ export async function fetchWorkById(id) {
     const works = await fetchWorks();
     return works.find((w) => w.id === String(id)) || null;
 }
+
+/**
+ * Fetch works by category
+ */
+export async function fetchWorksByCategory(category) {
+    const works = await fetchWorks();
+    return works.filter((w) => w.category === category);
+}
+
+/**
+ * Fetch works by category, sorted by popularity
+ */
+export async function fetchWorksByCategoryPopular(category) {
+    const works = await fetchWorksByCategory(category);
+    return [...works].sort((a, b) => b.viewCount - a.viewCount);
+}

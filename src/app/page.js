@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import WorkCard from '@/components/WorkCard';
-import { fetchWorksByNewest, fetchFeaturedWorks } from '@/lib/api';
+import { fetchWorksByNewest, fetchFeaturedWorks, fetchWorksByCategoryPopular } from '@/lib/api';
 import styles from './page.module.css';
 
 export const revalidate = 300; // ISR: revalidate every 5 minutes
@@ -8,6 +8,8 @@ export const revalidate = 300; // ISR: revalidate every 5 minutes
 export default async function HomePage() {
   const featured = await fetchFeaturedWorks();
   const newest = (await fetchWorksByNewest()).slice(0, 6);
+  const mvWorks = (await fetchWorksByCategoryPopular('mv')).slice(0, 6);
+  const storyWorks = (await fetchWorksByCategoryPopular('story')).slice(0, 6);
 
   return (
     <>
@@ -53,6 +55,50 @@ export default async function HomePage() {
             </div>
             <div className="grid grid--3">
               {featured.map((work) => (
+                <WorkCard key={work.id} work={work} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* MV Section */}
+      {mvWorks.length > 0 && (
+        <section className={`section ${styles.categorySection}`}>
+          <div className="container">
+            <div className={styles.sectionHead}>
+              <div>
+                <h2 className="section__title">🎵 MV（ミュージックビデオ）</h2>
+                <p className="section__subtitle">オリジナル楽曲に合わせたアニメーションMV</p>
+              </div>
+              <Link href="/works?category=mv" className="btn btn--ghost">
+                すべて見る →
+              </Link>
+            </div>
+            <div className="grid grid--3">
+              {mvWorks.map((work) => (
+                <WorkCard key={work.id} work={work} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Original Story Section */}
+      {storyWorks.length > 0 && (
+        <section className={`section ${styles.categorySection}`}>
+          <div className="container">
+            <div className={styles.sectionHead}>
+              <div>
+                <h2 className="section__title">🎬 オリジナルストーリー</h2>
+                <p className="section__subtitle">クリエイターが紡ぐオリジナルの物語</p>
+              </div>
+              <Link href="/works?category=story" className="btn btn--ghost">
+                すべて見る →
+              </Link>
+            </div>
+            <div className="grid grid--3">
+              {storyWorks.map((work) => (
                 <WorkCard key={work.id} work={work} />
               ))}
             </div>

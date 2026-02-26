@@ -1,3 +1,8 @@
+export const CATEGORIES = {
+    mv: { id: 'mv', label: 'MV（ミュージックビデオ）', short: 'MV', emoji: '🎵' },
+    story: { id: 'story', label: 'オリジナルストーリー', short: 'ストーリー', emoji: '🎬' },
+};
+
 export const mockWorks = [
     {
         id: "1",
@@ -9,6 +14,7 @@ export const mockWorks = [
         creatorUrl: "https://x.com/example",
         submittedAt: "2026-02-25",
         viewCount: 152000,
+        category: "story",
     },
     {
         id: "2",
@@ -20,17 +26,19 @@ export const mockWorks = [
         creatorUrl: "https://youtube.com/@example",
         submittedAt: "2026-02-23",
         viewCount: 89000,
+        category: "story",
     },
     {
         id: "3",
         title: "NEON BEAT",
         youtubeUrl: "https://www.youtube.com/watch?v=9bZkp7q19f0",
         youtubeId: "9bZkp7q19f0",
-        description: "ネオン輝く近未来の街で、ストリートダンサーたちがバトルを繰り広げる。3DCGと2Dアニメを融合させたハイブリッドな映像表現が新しい。",
+        description: "ネオン輝く近未来の街で繰り広げられるダンスMV。3DCGと2Dアニメを融合させたハイブリッドな映像表現が新しい。",
         creatorName: "NeonLab",
         creatorUrl: "https://x.com/example",
         submittedAt: "2026-02-20",
         viewCount: 340000,
+        category: "mv",
     },
     {
         id: "4",
@@ -42,28 +50,31 @@ export const mockWorks = [
         creatorUrl: "https://x.com/example",
         submittedAt: "2026-02-18",
         viewCount: 45000,
+        category: "story",
     },
     {
         id: "5",
         title: "MECHANICAL HEART",
         youtubeUrl: "https://www.youtube.com/watch?v=RgKAFK5djSk",
         youtubeId: "RgKAFK5djSk",
-        description: "心を持たないロボットが、感情を学んでいくSFドラマ。緻密なメカデザインと繊細な感情表現のコントラストが見どころ。",
+        description: "エレクトロニカに乗せてロボットの感情を描くアニメMV。緻密なメカデザインと繊細な感情表現のコントラストが見どころ。",
         creatorName: "機械仕掛けプロダクション",
         creatorUrl: "https://youtube.com/@example",
         submittedAt: "2026-02-15",
         viewCount: 23000,
+        category: "mv",
     },
     {
         id: "6",
         title: "桜の下で踊れ",
         youtubeUrl: "https://www.youtube.com/watch?v=fJ9rUzIMcZQ",
         youtubeId: "fJ9rUzIMcZQ",
-        description: "音楽に情熱を燃やす高校生たちが、文化祭でのライブを目指す青春ストーリー。アップテンポな楽曲に乗せた躍動感あるアニメーション。",
+        description: "音楽に情熱を燃やす高校生バンドのオリジナル曲MV。アップテンポな楽曲に乗せた躍動感あるアニメーション。",
         creatorName: "ブルースカイワークス",
         creatorUrl: "https://x.com/example",
         submittedAt: "2026-02-12",
         viewCount: 210000,
+        category: "mv",
     },
     {
         id: "7",
@@ -75,6 +86,7 @@ export const mockWorks = [
         creatorUrl: "https://x.com/example",
         submittedAt: "2026-02-10",
         viewCount: 67000,
+        category: "story",
     },
     {
         id: "8",
@@ -86,6 +98,7 @@ export const mockWorks = [
         creatorUrl: "https://youtube.com/@example",
         submittedAt: "2026-02-08",
         viewCount: 128000,
+        category: "story",
     },
 ];
 

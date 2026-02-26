@@ -125,6 +125,16 @@ function createSubmissionForm_() {
         .build()
     );
   
+  // カテゴリー（必須）
+  form.addMultipleChoiceItem()
+    .setTitle('カテゴリー')
+    .setHelpText('作品のカテゴリーを選択してください')
+    .setChoiceValues([
+      'MV（ミュージックビデオ）',
+      'オリジナルストーリー'
+    ])
+    .setRequired(true);
+
   // 作品の説明文（必須）
   form.addParagraphTextItem()
     .setTitle('作品の説明文・あらすじ')
@@ -276,6 +286,7 @@ function doGet(e) {
       timestamp: 0,
       title: headers.indexOf('作品タイトル'),
       youtubeUrl: headers.indexOf('YouTube URL'),
+      category: headers.indexOf('カテゴリー'),
       description: headers.indexOf('作品の説明文・あらすじ'),
       creatorName: headers.indexOf('制作者名 / チーム名'),
       creatorUrl: headers.indexOf('作者のプロフィールURL'),
@@ -296,16 +307,24 @@ function doGet(e) {
       const youtubeUrl = row[cols.youtubeUrl] || '';
       const youtubeId = extractYouTubeId_(youtubeUrl);
       
+      // Parse category to match frontend keys
+      let categoryKey = 'story';
+      const rawCategory = row[cols.category] || '';
+      if (rawCategory.includes('MV') || rawCategory.includes('ミュージックビデオ')) {
+        categoryKey = 'mv';
+      }
+
       works.push({
         id: String(row[cols.id] || i),
-        title: row[cols.title] || '',
+        title: row[cols.title],
         youtubeUrl: youtubeUrl,
         youtubeId: youtubeId,
+        category: categoryKey,
         description: row[cols.description] || '',
         creatorName: row[cols.creatorName] || '',
         creatorUrl: row[cols.creatorUrl] || '',
         submittedAt: formatDate_(row[cols.timestamp]),
-        viewCount: Number(row[cols.viewCount] || 0),
+        viewCount: Number(row[cols.viewCount]) || 0,
       });
     }
     
@@ -465,16 +484,18 @@ function onFormSubmit(e) {
   // values[0] = Timestamp
   // values[1] = 作品タイトル
   // values[2] = YouTube URL
-  // values[3] = 作品の説明文・あらすじ
-  // values[4] = 制作者名 / チーム名
-  // values[5] = 作者のプロフィールURL
-  // values[6] = 連絡先メールアドレス
+  // values[3] = カテゴリー
+  // values[4] = 作品の説明文・あらすじ
+  // values[5] = 制作者名 / チーム名
+  // values[6] = 作者のプロフィールURL
+  // values[7] = 連絡先メールアドレス
   
   const title = values[1] || '(タイトルなし)';
   const youtubeUrl = values[2] || '';
-  const description = values[3] || '';
-  const creator = values[4] || '(不明)';
-  const creatorUrl = values[5] || '';
+  const category = values[3] || '未分類';
+  const description = values[4] || '';
+  const creator = values[5] || '(不明)';
+  const creatorUrl = values[6] || '';
   const timestamp = values[0] || '';
   
   const sheetUrl = 'https://docs.google.com/spreadsheets/d/' + SPREADSHEET_ID;
@@ -485,7 +506,7 @@ function onFormSubmit(e) {
     fields: [
       { name: '🎬 作品タイトル', value: title, inline: false },
       { name: '👤 制作者', value: creator, inline: true },
-      { name: '🕐 投稿日時', value: timestamp, inline: true },
+      { name: '🏷️ カテゴリー', value: category, inline: true },
       { name: '🔗 YouTube', value: youtubeUrl || 'なし', inline: false },
     ],
     footer: { text: 'indieanime.jp' },
