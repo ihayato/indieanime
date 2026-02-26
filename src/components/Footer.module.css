@@ -1,0 +1,96 @@
+.footer {
+    background: var(--color-text);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.inner {
+    padding: 64px 24px 32px;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    gap: 48px;
+    margin-bottom: 48px;
+}
+
+.brand {
+    flex-shrink: 0;
+}
+
+.tagline {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    max-width: 240px;
+    line-height: 1.6;
+}
+
+.linksGrid {
+    display: flex;
+    gap: 48px;
+}
+
+.linkGroupTitle {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 16px;
+}
+
+.linkList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.link {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.65);
+    transition: color var(--transition-fast);
+}
+
+.link:hover {
+    color: white;
+}
+
+.bottom {
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.rainbowLine {
+    height: 3px;
+    background: var(--gradient-rainbow);
+    background-size: 200% 100%;
+    animation: shimmer 4s linear infinite;
+}
+
+@media (max-width: 768px) {
+    .top {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .linksGrid {
+        gap: 32px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .linksGrid {
+        flex-direction: column;
+        gap: 24px;
+    }
+}

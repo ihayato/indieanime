@@ -1,0 +1,26 @@
+.wrapper {
+    display: inline-flex;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-full);
+    padding: 4px;
+    gap: 2px;
+}
+
+.btn {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+}
+
+.btn:hover {
+    color: var(--color-text);
+}
+
+.active {
+    background: var(--color-surface);
+    color: var(--color-text);
+    box-shadow: var(--shadow-sm);
+}

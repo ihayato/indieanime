@@ -1,0 +1,87 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.infoCard {
+    text-align: center;
+    padding: 48px 32px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-xl);
+}
+
+.infoIcon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.infoTitle {
+    font-family: 'Outfit', 'Noto Sans JP', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.infoDesc {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.emailLink {
+    display: inline-block;
+    padding: 12px 32px;
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-color);
+}
+
+.emailLink:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25);
+}
+
+.faqTitle {
+    font-family: 'Outfit', 'Noto Sans JP', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faqItem {
+    padding: 20px 24px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast);
+}
+
+.faqItem:hover {
+    border-color: var(--color-border);
+}
+
+.faqItem h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--color-text);
+}
+
+.faqItem p {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+}
