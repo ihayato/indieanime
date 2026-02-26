@@ -421,3 +421,96 @@ function updateViewCounts() {
   
   Logger.log('✅ ' + updated + ' 件の再生回数を更新しました');
 }
+
+
+// ====================================================================
+// Discord 通知（フォーム送信時に Webhook で通知）
+// ====================================================================
+
+// ↓↓↓ ここに Discord Webhook URL を貼り付けてください ↓↓↓
+const DISCORD_WEBHOOK_URL = 'YOUR_DISCORD_WEBHOOK_URL_HERE';
+
+/**
+ * 通知トリガーを設定する関数 — setup() 後に1回だけ実行してください
+ * 
+ * これを実行すると、フォーム送信時に onFormSubmit が自動的に呼ばれるようになります
+ */
+function setupNotificationTrigger() {
+  // 既存のトリガーを削除（重複防止）
+  const triggers = ScriptApp.getProjectTriggers();
+  triggers.forEach(trigger => {
+    if (trigger.getHandlerFunction() === 'onFormSubmit') {
+      ScriptApp.deleteTrigger(trigger);
+    }
+  });
+  
+  // 新しいトリガーを設定
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  ScriptApp.newTrigger('onFormSubmit')
+    .forSpreadsheet(ss)
+    .onFormSubmit()
+    .create();
+  
+  Logger.log('✅ Discord 通知トリガーを設定しました');
+  Logger.log('フォームが送信されると Discord に通知が届きます');
+}
+
+/**
+ * フォーム送信時に呼ばれるトリガー関数
+ */
+function onFormSubmit(e) {
+  if (!e || !e.values) return;
+  
+  const values = e.values;
+  // values[0] = Timestamp
+  // values[1] = 作品タイトル
+  // values[2] = YouTube URL
+  // values[3] = 作品の説明文・あらすじ
+  // values[4] = 制作者名 / チーム名
+  // values[5] = 作者のプロフィールURL
+  // values[6] = 連絡先メールアドレス
+  
+  const title = values[1] || '(タイトルなし)';
+  const youtubeUrl = values[2] || '';
+  const description = values[3] || '';
+  const creator = values[4] || '(不明)';
+  const creatorUrl = values[5] || '';
+  const timestamp = values[0] || '';
+  
+  const sheetUrl = 'https://docs.google.com/spreadsheets/d/' + SPREADSHEET_ID;
+  
+  const embed = {
+    title: '📩 新しい作品が投稿されました！',
+    color: 0x7C3AED, // purple
+    fields: [
+      { name: '🎬 作品タイトル', value: title, inline: false },
+      { name: '👤 制作者', value: creator, inline: true },
+      { name: '🕐 投稿日時', value: timestamp, inline: true },
+      { name: '🔗 YouTube', value: youtubeUrl || 'なし', inline: false },
+    ],
+    footer: { text: 'indieanime.jp' },
+    timestamp: new Date().toISOString(),
+  };
+  
+  if (description) {
+    embed.description = description.length > 200 
+      ? description.substring(0, 200) + '...' 
+      : description;
+  }
+  
+  const payload = {
+    content: '**新規投稿あり** — [Google Sheet で確認](' + sheetUrl + ')',
+    embeds: [embed],
+  };
+  
+  try {
+    UrlFetchApp.fetch(DISCORD_WEBHOOK_URL, {
+      method: 'post',
+      contentType: 'application/json',
+      payload: JSON.stringify(payload),
+    });
+    Logger.log('✅ Discord に通知を送信しました: ' + title);
+  } catch (error) {
+    Logger.log('❌ Discord 通知エラー: ' + error.message);
+  }
+}
