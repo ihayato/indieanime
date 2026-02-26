@@ -43,40 +43,21 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Featured / Pickup Section */}
-      {featured.length > 0 && (
-        <section className={`section ${styles.featured}`}>
+      {/* Newest Section */}
+      {newest.length > 0 && (
+        <section className={`section ${styles.newest}`}>
           <div className="container">
             <div className={styles.sectionHead}>
               <div>
-                <h2 className="section__title">🌟 ピックアップ作品</h2>
-                <p className="section__subtitle">注目のインディーアニメ作品をご紹介</p>
+                <h2 className="section__title">🆕 新着作品</h2>
+                <p className="section__subtitle">最近投稿された作品たち</p>
               </div>
-            </div>
-            <div className="grid grid--3">
-              {featured.map((work) => (
-                <WorkCard key={work.id} work={work} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* MV Section */}
-      {mvWorks.length > 0 && (
-        <section className={`section ${styles.categorySection}`}>
-          <div className="container">
-            <div className={styles.sectionHead}>
-              <div>
-                <h2 className="section__title">🎵 MV（ミュージックビデオ）</h2>
-                <p className="section__subtitle">オリジナル楽曲に合わせたアニメーションMV</p>
-              </div>
-              <Link href="/works?category=mv" className="btn btn--ghost">
+              <Link href="/works" className="btn btn--ghost">
                 すべて見る →
               </Link>
             </div>
             <div className="grid grid--3">
-              {mvWorks.map((work) => (
+              {newest.map((work) => (
                 <WorkCard key={work.id} work={work} />
               ))}
             </div>
@@ -106,21 +87,40 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* Newest Section */}
-      {newest.length > 0 && (
-        <section className={`section ${styles.newest}`}>
+      {/* MV Section */}
+      {mvWorks.length > 0 && (
+        <section className={`section ${styles.categorySection}`}>
           <div className="container">
             <div className={styles.sectionHead}>
               <div>
-                <h2 className="section__title">🆕 新着作品</h2>
-                <p className="section__subtitle">最近投稿された作品たち</p>
+                <h2 className="section__title">🎵 MV（ミュージックビデオ）</h2>
+                <p className="section__subtitle">オリジナル楽曲に合わせたアニメーションMV</p>
               </div>
-              <Link href="/works" className="btn btn--ghost">
+              <Link href="/works?category=mv" className="btn btn--ghost">
                 すべて見る →
               </Link>
             </div>
             <div className="grid grid--3">
-              {newest.map((work) => (
+              {mvWorks.map((work) => (
+                <WorkCard key={work.id} work={work} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Featured / Pickup Section */}
+      {featured.length > 0 && (
+        <section className={`section ${styles.featured}`}>
+          <div className="container">
+            <div className={styles.sectionHead}>
+              <div>
+                <h2 className="section__title">🌟 ピックアップ作品</h2>
+                <p className="section__subtitle">注目のインディーアニメ作品をご紹介</p>
+              </div>
+            </div>
+            <div className="grid grid--3">
+              {featured.map((work) => (
                 <WorkCard key={work.id} work={work} />
               ))}
             </div>
