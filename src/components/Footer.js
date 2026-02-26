@@ -31,7 +31,7 @@ export default function Footer() {
             <div className={`container ${styles.inner}`}>
                 <div className={styles.top}>
                     <div className={styles.brand}>
-                        <span className="logo-text">indieanime.jp</span>
+                        <span className="logo-text">indieanime.jp [β]</span>
                         <p className={styles.tagline}>
                             インディーアニメの世界を、もっと広く。
                         </p>

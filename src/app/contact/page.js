@@ -1,7 +1,7 @@
 import styles from './page.module.css';
 
 export const metadata = {
-    title: 'お問い合わせ | indieanime.jp',
+    title: 'お問い合わせ | indieanime.jp [β]',
     description: 'indieanime.jpへのお問い合わせ。',
 };
 

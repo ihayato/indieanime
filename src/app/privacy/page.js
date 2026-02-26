@@ -1,5 +1,5 @@
 export const metadata = {
-    title: 'プライバシーポリシー | indieanime.jp',
+    title: 'プライバシーポリシー | indieanime.jp [β]',
     description: 'indieanime.jpのプライバシーポリシーについて。',
 };
 

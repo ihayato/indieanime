@@ -18,7 +18,7 @@ export default function Header() {
         <header className={styles.header}>
             <div className={`container ${styles.inner}`}>
                 <Link href="/" className={styles.logo}>
-                    <span className="logo-text">indieanime.jp</span>
+                    <span className="logo-text">indieanime.jp [β]</span>
                 </Link>
 
                 <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>

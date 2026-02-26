@@ -1,7 +1,7 @@
 import styles from './page.module.css';
 
 export const metadata = {
-    title: '作品を投稿する | indieanime.jp',
+    title: '作品を投稿する | indieanime.jp [β]',
     description: 'あなたのインディーアニメ作品をindieanime.jpに投稿しましょう。YouTubeに公開済みの作品をフォームから投稿するだけで、審査後に掲載されます。',
 };
 

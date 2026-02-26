@@ -18,7 +18,7 @@ export async function generateMetadata({ params }) {
     if (!work) return {};
 
     return {
-        title: `${work.title} | indieanime.jp`,
+        title: `${work.title} | indieanime.jp [β]`,
         description: work.description,
     };
 }

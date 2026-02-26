@@ -1,5 +1,5 @@
 export const metadata = {
-    title: '利用規約 | indieanime.jp',
+    title: '利用規約 | indieanime.jp [β]',
     description: 'indieanime.jpの利用規約について。',
 };
 

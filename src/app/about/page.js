@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styles from './page.module.css';
 
 export const metadata = {
-    title: 'About | indieanime.jp',
+    title: 'About | indieanime.jp [β]',
     description: 'indieanime.jpについて。インディーアニメ文化を盛り上げるためのプラットフォームです。',
 };
 

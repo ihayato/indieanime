@@ -289,7 +289,7 @@ function doGet(e) {
       category: headers.indexOf('カテゴリー'),
       description: headers.indexOf('作品の説明文・あらすじ'),
       creatorName: headers.indexOf('制作者名 / チーム名'),
-      creatorUrl: headers.indexOf('作者のプロフィールURL'),
+      creatorUrl: (headers.indexOf('制作者のプロフィールURL') !== -1) ? headers.indexOf('制作者のプロフィールURL') : headers.indexOf('作者のプロフィールURL'),
       id: headers.indexOf('id'),
       approved: headers.indexOf('approved'),
       viewCount: headers.indexOf('view_count'),
@@ -447,7 +447,7 @@ function updateViewCounts() {
 // ====================================================================
 
 // ↓↓↓ ここに Discord Webhook URL を貼り付けてください ↓↓↓
-const DISCORD_WEBHOOK_URL = 'YOUR_DISCORD_WEBHOOK_URL_HERE';
+const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1476385298907664516/r4Qw9Pt2nNgAHaZtxFLkV8N2s8OTmzxlCOazb1OQLYlYeTT5in6TyHPh1SQ7YSp82JQI';
 
 /**
  * 通知トリガーを設定する関数 — setup() 後に1回だけ実行してください
