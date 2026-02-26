@@ -63,7 +63,7 @@ export default function SubmitPage() {
                         <h2 className={styles.formTitle}>投稿フォーム</h2>
                         <div className={styles.formEmbed}>
                             <iframe
-                                src="https://docs.google.com/forms/d/e/1FAIpQLSfbyTscah8Thz12l4kloCF2nbqytiX84GQCcePyJL6ZR1f9tg/viewform?embedded=true"
+                                src="https://docs.google.com/forms/d/e/1FAIpQLSd1W1DtmbJ_l4ZlVCQ2eKpzoLCxYn65GPFFXaV3i5w9HA7UrA/viewform?embedded=true"
                                 width="100%"
                                 height="900"
                                 frameBorder="0"
