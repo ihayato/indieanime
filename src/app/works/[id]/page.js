@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import YouTubeEmbed from '@/components/YouTubeEmbed';
+import YouTubeEngagement from '@/components/YouTubeEngagement';
 import WorkCard from '@/components/WorkCard';
 import { fetchWorkById, fetchWorks, fetchWorksByNewest } from '@/lib/api';
 import styles from './page.module.css';
@@ -60,6 +61,7 @@ export default async function WorkDetailPage({ params }) {
                         <div className={styles.main}>
                             <h1 className={styles.title}>{work.title}</h1>
                             <p className={styles.description}>{work.description}</p>
+                            <YouTubeEngagement videoId={work.youtubeId} />
                         </div>
 
                         <aside className={styles.sidebar}>
